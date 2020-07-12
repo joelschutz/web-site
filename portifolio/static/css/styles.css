@@ -200,6 +200,7 @@ img {
   border-style: none;
 }
 
+
 svg {
   overflow: hidden;
   vertical-align: middle;
@@ -476,6 +477,17 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+}
+
+.logo {
+  position: absolute;
+  right: 0.5rem;
+  width: 10rem;
+}
+@media (min-width: 519px) {
+  .logo {
+    position: static;
+  }
 }
 
 .img-thumbnail {
