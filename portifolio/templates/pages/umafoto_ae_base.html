@@ -1,0 +1,58 @@
+{% extends 'pages/base.html' %}
+
+
+{% block content %}
+   
+<body>
+    {% include 'pages/umafoto_ae_nav.html' %}
+    <div class="container-fluid p-0">
+        <section class="resume-section" id="photo-query">
+        <div class="resume-section-content">
+            <h3 class="mb-3">Click no botão e te mando uma imagem.</h3>
+            <form action="fotos" class="col-8">
+                <div class="form-group">
+                    <input type="text" name="tag" class="form-control form-control-lg" aria-describedby="tagHelp" placeholder="Palavra Chave">
+                    <small name="tagHelp" class="form-text text-muted">Não é necessário preencher</samll>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="btns-orient">Orientação:</label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons" name="btns-orient">
+                            <label class="btn btn-secondary btn-lg btn-toggle">
+                                <input type="radio" id="all" name="orientation" value="all" onclick="btn-toggle" checked>Qualquer
+                            </label>
+                            <label class="btn btn-secondary btn-lg btn-toggle">
+                                <input type="radio" id="horizontal" name="orientation" value="horizontal" onclick="btn-toggle">Paisagem
+                            </label>
+                            <label class="btn btn-secondary btn-lg btn-toggle">
+                                <input type="radio" id="vertical" name="orientation" value="vertical" onclick="btn-toggle">Retrato
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col-md-4">
+                        <label for="color">Cor:</label>
+                        <select name="color" class="form-control form-control-lg">
+                            <option value="all">Qualquer</option>
+                            <option value="grayscale">Preto e Branco</option>
+                            <option value="red">Vermelho</option>
+                            <option value="orange">Laranja</option>
+                            <option value="yellow">Amarelo</option>
+                            <option value="green">Verde</option>
+                            <option value="turquoise">Turquesa</option>
+                            <option value="blue">Azul</option>
+                            <option value="lilac">Roxo</option>
+                            <option value="pink">Rosa</option>
+                            <option value="black">Preto</option>
+                            <option value="white">Branco</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <input type="submit" value="Por Favor!" class="btn-primary btn-lg">
+            </form>
+            </div>
+            </section>
+        </div>
+    </body>
+{% endblock %}
