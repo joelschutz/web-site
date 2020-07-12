@@ -482,9 +482,10 @@ mark,
 .logo {
   position: absolute;
   right: 0.5rem;
+  top: 0.5rem;
   width: 10rem;
 }
-@media (min-width: 519px) {
+@media (max-width: 519px) {
   .logo {
     position: static;
   }
