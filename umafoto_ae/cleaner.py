@@ -11,4 +11,5 @@ def jsons_cleaner():
     folder_path = './umafoto_ae/jsons'
     folder = os.listdir(folder_path)
     for f in folder:
-        os.remove(folder_path + '/' + f)
+        if f != 'placeholder':
+            os.remove(folder_path + '/' + f)
