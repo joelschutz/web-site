@@ -1,4 +1,4 @@
-import requests, json, random, os os.path
+import requests, json, random, os, os.path
 from datetime import datetime
 from umafoto_ae.exceptions import ServiceNotFound
 
