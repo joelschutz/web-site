@@ -1,4 +1,4 @@
-import requests, json, random, os, os.path
+import requests, json, random, os
 from datetime import datetime
 from umafoto_ae.exceptions import ServiceNotFound
 
@@ -84,8 +84,8 @@ class ApiGetter:
         if api_provider == 'unsplash':
             self.photo_info['url'] = photo_form['urls']['regular']
             self.photo_info['link'] = photo_form['links']['html']
-            self.photo_info['author_name'] = photo_form['user']['name']
-            #self.photo_info['author_name'] = os.path.dirname(os.path.abspath(__main__))
+            #self.photo_info['author_name'] = photo_form['user']['name']
+            self.photo_info['author_name'] = os.getcwd()
             self.photo_info['license'] = 'https://unsplash.com/license'
             self.photo_info['provider'] = 'Unsplash'
             self.photo_info['author_url'] = photo_form['user']['links']['html']
@@ -93,8 +93,8 @@ class ApiGetter:
         elif api_provider == 'pixabay':
             self.photo_info['url'] = photo_form['largeImageURL']
             self.photo_info['link'] = photo_form['pageURL']
-            self.photo_info['author_name'] = photo_form['user']
-            #self.photo_info['author_name'] = os.path.dirname(os.path.abspath(__main__))
+            #self.photo_info['author_name'] = photo_form['user']
+            self.photo_info['author_name'] = os.getcwd()
             self.photo_info['license'] = 'https://pixabay.com/service/license/'
             self.photo_info['provider'] = 'Pixabay'
             self.photo_info['author_url'] = f'https://pixabay.com/pt/users/{photo_form["user"]}'
@@ -120,7 +120,7 @@ class ApiGetter:
                 response = json.load(file)
         except FileNotFoundError:
             response = eval(api_provider)(tag, orientation, color)
-            self.store_json(response,api_provider, tag, orientation, color)
+            #self.store_json(response,api_provider, tag, orientation, color)
         finally:
             photo = self.pick_random(response, api_provider)
             self.fill_photo_info(photo, api_provider)
