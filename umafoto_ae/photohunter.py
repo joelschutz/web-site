@@ -84,8 +84,8 @@ class ApiGetter:
         if api_provider == 'unsplash':
             self.photo_info['url'] = photo_form['urls']['regular']
             self.photo_info['link'] = photo_form['links']['html']
-            #self.photo_info['author_name'] = photo_form['user']['name']
-            self.photo_info['author_name'] = os.path.dirname(os.path.abspath(__main__))
+            self.photo_info['author_name'] = photo_form['user']['name']
+            #self.photo_info['author_name'] = os.path.dirname(os.path.abspath(__main__))
             self.photo_info['license'] = 'https://unsplash.com/license'
             self.photo_info['provider'] = 'Unsplash'
             self.photo_info['author_url'] = photo_form['user']['links']['html']
@@ -93,8 +93,8 @@ class ApiGetter:
         elif api_provider == 'pixabay':
             self.photo_info['url'] = photo_form['largeImageURL']
             self.photo_info['link'] = photo_form['pageURL']
-            #self.photo_info['author_name'] = photo_form['user']
-            self.photo_info['author_name'] = os.path.dirname(os.path.abspath(__main__))
+            self.photo_info['author_name'] = photo_form['user']
+            #self.photo_info['author_name'] = os.path.dirname(os.path.abspath(__main__))
             self.photo_info['license'] = 'https://pixabay.com/service/license/'
             self.photo_info['provider'] = 'Pixabay'
             self.photo_info['author_url'] = f'https://pixabay.com/pt/users/{photo_form["user"]}'
@@ -116,18 +116,18 @@ class ApiGetter:
         pixabay = self.request_pixabay
 
         try:
-            with open(f'./umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'rt') as file:
+            with open(f'/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'rt') as file:
                 response = json.load(file)
         except FileNotFoundError:
             response = eval(api_provider)(tag, orientation, color)
-            #self.store_json(response,api_provider, tag, orientation, color)
+            self.store_json(response,api_provider, tag, orientation, color)
         finally:
             photo = self.pick_random(response, api_provider)
             self.fill_photo_info(photo, api_provider)
 
 
     def store_json(self, json_form, api_provider, tag, orientation, color):
-        with open(f'./umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'at') as file:
+        with open(f'/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'at') as file:
             json.dump(json_form, file)
         
         
