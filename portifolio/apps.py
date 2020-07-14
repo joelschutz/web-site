@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class FotosConfig(AppConfig):
-    name = 'fotos'
+class PortifolioConfig(AppConfig):
+    name = 'portifolio'

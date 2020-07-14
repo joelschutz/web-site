@@ -15,16 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from portifolio import views
+import portifolio.views
+import umafoto_ae.views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('umafoto-ae/', views.umafoto_ae, name='umafoto-ae'),
-    path('umafoto-ae/fotos/', views.fotos, name='fotos'),
-    path('about/', views.about, name='about'),
+    path('', portifolio.views.home, name='home'),
+    path('umafoto-ae/', umafoto_ae.views.umafoto_ae, name='umafoto-ae'),
+    path('umafoto-ae/fotos/', umafoto_ae.views.fotos, name='fotos'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,6 +1,6 @@
 import requests, json, random, os
 from datetime import datetime
-from portifolio.exceptions import ServiceNotFound
+from umafoto_ae.exceptions import ServiceNotFound
 
 
 class ApiGetter:
@@ -82,7 +82,7 @@ class ApiGetter:
 
     def fill_photo_info(self, photo_form, api_provider):
         if api_provider == 'unsplash':
-            self.photo_info['url'] = photo_form['urls']['small']
+            self.photo_info['url'] = photo_form['urls']['regular']
             self.photo_info['link'] = photo_form['links']['html']
             self.photo_info['author_name'] = photo_form['user']['name']
             self.photo_info['license'] = 'https://unsplash.com/license'
@@ -90,7 +90,7 @@ class ApiGetter:
             self.photo_info['author_url'] = photo_form['user']['links']['html']
             self.photo_info['provider_logo'] = '/static/assets/img/unsplash.svg'
         elif api_provider == 'pixabay':
-            self.photo_info['url'] = photo_form['webformatURL']
+            self.photo_info['url'] = photo_form['largeImageURL']
             self.photo_info['link'] = photo_form['pageURL']
             self.photo_info['author_name'] = photo_form['user']
             self.photo_info['license'] = 'https://pixabay.com/service/license/'
@@ -114,7 +114,7 @@ class ApiGetter:
         pixabay = self.request_pixabay
 
         try:
-            with open(f'portifolio/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'rt') as file:
+            with open(f'umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'rt') as file:
                 response = json.load(file)
         except FileNotFoundError:
             response = eval(api_provider)(tag, orientation, color)
@@ -125,7 +125,7 @@ class ApiGetter:
 
 
     def store_json(self, json_form, api_provider, tag, orientation, color):
-        with open(f'portifolio/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'at') as file:
+        with open(f'umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'at') as file:
             json.dump(json_form, file)
         
         

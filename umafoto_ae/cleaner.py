@@ -8,8 +8,7 @@ new connection to the seerver is made.
 import os
 
 def jsons_cleaner():
-    folder_path = './portifolio/jsons'
+    folder_path = './umafoto_ae/jsons'
     folder = os.listdir(folder_path)
-    if len(folder) > 20:
-        for f in folder:
-            os.remove(f)
+    for f in folder:
+        os.remove(folder_path + '/' + f)

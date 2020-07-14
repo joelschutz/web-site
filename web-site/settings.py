@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['joelschutz.herokuapp.com']
+ALLOWED_HOSTS = ['joelschutz.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portifolio',
+    'umafoto_ae'
 ]
 
 MIDDLEWARE = [
@@ -104,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Fortaleza'
 
 USE_I18N = True
 
@@ -120,4 +121,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT="/var/www/joelschutz.herokuapp.com/portifolio/static/"
+#STATIC_ROOT="/var/www/joelschutz.herokuapp.com/static/"
+#STATIC_ROOT="/Users/joelschutz/Documents/Python/Django/web-site/"

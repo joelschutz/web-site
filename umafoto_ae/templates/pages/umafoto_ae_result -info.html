@@ -1,0 +1,23 @@
+{% extends 'pages/ufa_base.html' %}
+
+
+{% block content %}
+        <body>
+        {% include 'pages/umafoto_ae_nav.html' %}
+        <div class="container-lg">
+            <div class="col-lg-auto">
+                <h1>Aqui sua foto:</h1>
+                
+                <div>
+                <h6>Imagem de <a href={{ author_url }}>{{ author_name }}</a><br>
+                Licença: <a href={{ license }}>{{ provider }} License</a></h6>
+                <a href={{ link }}><img class="img-fluid" src={{ url }}></a>
+                </div>
+                
+                <h2>De nada! ^^</h2>
+                <p>Provided by:</p>
+                <a  href="https://{{ provider }}.com"><img style="max-width:13rem !important" class="img-thumbnail" src={{ provider_logo }}/></a>
+            </div>
+        </div>
+        </body>
+{% endblock %}

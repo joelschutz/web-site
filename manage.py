@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import cleaner
+from umafoto_ae import cleaner
 
 
 def main():
