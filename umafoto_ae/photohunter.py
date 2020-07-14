@@ -114,7 +114,7 @@ class ApiGetter:
         pixabay = self.request_pixabay
 
         try:
-            with open(f'/umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'rt') as file:
+            with open(f'./umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'rt') as file:
                 response = json.load(file)
         except FileNotFoundError:
             response = eval(api_provider)(tag, orientation, color)
@@ -125,7 +125,7 @@ class ApiGetter:
 
 
     def store_json(self, json_form, api_provider, tag, orientation, color):
-        with open(f'/umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'at') as file:
+        with open(f'./umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'at') as file:
             json.dump(json_form, file)
         
         
