@@ -70,6 +70,7 @@ body {
   color: #3E3F3A;
   text-align: left;
   background-color: #fff;
+  padding-top: 120px;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -5130,8 +5131,8 @@ input[type="button"].btn-block {
   text-decoration: none;
 }
 
-.card-link + .card-link {
-  margin-left: 1.25rem;
+.card-link {
+  margin-right: 1rem;
 }
 
 .card-header {
@@ -5282,8 +5283,8 @@ input[type="button"].btn-block {
 
 @media (min-width: 576px) {
   .card-columns {
-    -webkit-column-count: 3;
-            column-count: 3;
+    -webkit-column-count: 4;
+            column-count: 5;
     -webkit-column-gap: 1.25rem;
             column-gap: 1.25rem;
     orphans: 1;
@@ -10770,7 +10771,6 @@ a.text-dark:hover, a.text-dark:focus {
   }
   body {
     min-width: 992px !important;
-    padding-top: 120px;
   }
   .container {
     min-width: 992px !important;

@@ -5,18 +5,35 @@
         <body>
         {% include 'pages/que_nome_nav.html' %}
         <div class="container-lg">
-            <div class="col-lg-auto">
-                <h1>Aqui sua foto:</h1>
-                
-                <div>
-                <h6>Imagem de <a href={{ author_url }}>{{ author_name }}</a><br>
-                Licença: <a href={{ license }}>{{ provider }} License</a></h6>
-                <a href={{ link }}><img class="img-fluid" src={{ url }}></a>
+           <div class="col-lg-auto">
+                <div class="jumbotron">
+                    <h1 class="display-3">{{ team_sel.name }}<img class="float-right" style="max-width:40%" src={{ team_sel.team_logo }}></h1>
+                    <p class="lead">Aqui estão todos os jogadores que já passaram pelo seu time do coração por ordem de nome mais peculiar.</p>
+                    <hr class="my-4">
+                    <p>Mais informações sobre a equipe:</p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href={{ team_sel.url }} role="button">Perfil no TransferMarkt</a>
+                    </p>
                 </div>
-                
-                <h3>De nada! ^^</h3>
-                <p><small>Provided by:</small></p>
-                <a  href="https://{{ provider }}.com"><img style="max-width:13rem !important" class="img-thumbnail" src={{ provider_logo }}/></a>
+                <div class="card-deck">
+                {% for player in players_list %}
+                    <div class="card" style="min-width:12rem;margin-bottom:15px">
+                        <h3 class="card-header">{{ player.name }}</h3>
+                        <img style="height: auto; width: 100%; display: block;" src={{ player.photo }} alt="Card image">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Data de Nascimento:<br> {{ player.birthday }}</li>
+                            <li class="list-group-item">Equipes que jogou:<br>
+                                {% for team in player.teams.all %}
+                                <a class="card-link" style="margin-right:4px" href="?team={{ team.team_id }}"><img style="max-width:20px;margin-bottom:4px" src={{ team.team_logo }}></a>
+                                {% endfor %}
+                            </li>
+                            <li class="list-group-item">
+                                <a href={{ player.url }} class="card-link">Perfil no TransferMarkt</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% endfor %}
+                </div>
             </div>
         </div>
         </body>

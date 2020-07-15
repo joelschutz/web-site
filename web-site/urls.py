@@ -28,6 +28,7 @@ urlpatterns = [
     path('umafoto-ae/fotos/', umafoto_ae.views.fotos, name='umafoto-ae-fotos'),
     path('umafoto-ae/info/', umafoto_ae.views.info, name='umafoto-ae-info'),
     path('que-nome/', que_nome.views.home, name='que-nome'),
+    path('que-nome/team/', que_nome.views.team, name='que-nome-team'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

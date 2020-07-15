@@ -5,13 +5,14 @@
    
 <body>
     {% include 'pages/que_nome_nav.html' %}
-    <div class="container">
-
-        <h1>Que imagem deseja?</h1>
-
-        {% for team in teams_list %}
-        <a role="button" class="btn btn-outline-primary" href="#"><img style="max-width:40%" src={{ team.team_logo }}></a>
-        {% endfor %}
+    <div class="container-lg">
+        <div class="col-lg-auto">
+            <h1>Qual seu Time do Coração?</h1>
+            {% for team in teams_list %}
+            <a role="button" class="btn btn-outline-primary" style="max-width:8rem;height:12rem;line-height:14px;margin-bottom:3px" href="team/?team={{ team.team_id }}"><img style="max-width:100%" src={{ team.team_logo }}>{{ team.name }}</a>
+            {% endfor %}
+            
+        </div>
     </div>
 </body>
 {% endblock %}
