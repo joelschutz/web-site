@@ -122,5 +122,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#STATIC_ROOT="/var/www/joelschutz.herokuapp.com/static/"
-#STATIC_ROOT="/Users/joelschutz/Documents/Python/Django/web-site/"
+STATIC_ROOT="/var/www/joelschutz.herokuapp.com/static/"
