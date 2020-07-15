@@ -17,14 +17,17 @@ from django.contrib import admin
 from django.urls import path
 import portifolio.views
 import umafoto_ae.views
+import que_nome.views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', portifolio.views.home, name='home'),
-    path('umafoto-ae/', umafoto_ae.views.umafoto_ae, name='umafoto-ae'),
-    path('umafoto-ae/fotos/', umafoto_ae.views.fotos, name='fotos'),
+    path('umafoto-ae/', umafoto_ae.views.home, name='umafoto-ae'),
+    path('umafoto-ae/fotos/', umafoto_ae.views.fotos, name='umafoto-ae-fotos'),
+    path('umafoto-ae/info/', umafoto_ae.views.info, name='umafoto-ae-info'),
+    path('que-nome/', que_nome.views.home, name='que-nome'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

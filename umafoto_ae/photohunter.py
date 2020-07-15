@@ -35,7 +35,7 @@ class ApiGetter:
                     self.pick_photo(sel, tag, orientation, color)
                     return self.photo_info
                 except IndexError:
-                    pass
+                    return {'status':False}
 
     def request_unsplash(self, tag, orientation, color):
         print('Pedindo foto ao unsplash')
@@ -73,6 +73,7 @@ class ApiGetter:
         color = f'&colors={color}'
         request = self.pixabay_api + self.pixabay_key + f'&per_page={self.per_page}' + tag + orientation + color + '&image_type=photo'
         response = requests.get(request)
+
         if response.status_code != 200:
             raise ServiceNotFound('Resposta inesperada do servidor')
         else:
@@ -89,6 +90,7 @@ class ApiGetter:
             self.photo_info['provider'] = 'Unsplash'
             self.photo_info['author_url'] = photo_form['user']['links']['html']
             self.photo_info['provider_logo'] = '/static/assets/img/unsplash.svg'
+            self.photo_info['status'] = True
         elif api_provider == 'pixabay':
             self.photo_info['url'] = photo_form['largeImageURL']
             self.photo_info['link'] = photo_form['pageURL']
@@ -97,6 +99,7 @@ class ApiGetter:
             self.photo_info['provider'] = 'Pixabay'
             self.photo_info['author_url'] = f'https://pixabay.com/pt/users/{photo_form["user"]}'
             self.photo_info['provider_logo'] = '/static/assets/img/pixabay.svg'
+            self.photo_info['status'] = True
             
 
 
@@ -116,12 +119,16 @@ class ApiGetter:
         try:
             with open(f'./umafoto_ae/jsons/{api_provider}_{tag}_{orientation}_{color}.json', 'rt') as file:
                 response = json.load(file)
+                print('Entregando JSON armazenado')
         except FileNotFoundError:
             response = eval(api_provider)(tag, orientation, color)
+            print('Entregando JSON novo')
             self.store_json(response,api_provider, tag, orientation, color)
         finally:
+            print('Escolhendo Foto')
             photo = self.pick_random(response, api_provider)
             self.fill_photo_info(photo, api_provider)
+            
 
 
     def store_json(self, json_form, api_provider, tag, orientation, color):
@@ -129,3 +136,4 @@ class ApiGetter:
             json.dump(json_form, file)
         
         
+#https://pixabay.com/api/?key=16987749-8d411cadaab71f440da579ff0&q=AOSGBASÇFLGJASPFGNAS&image_type=photo

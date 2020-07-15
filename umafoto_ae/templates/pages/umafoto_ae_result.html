@@ -1,4 +1,4 @@
-{% extends 'pages/ufa_base.html' %}
+{% extends 'pages/umafoto_ae_base.html' %}
 
 
 {% block content %}
@@ -6,6 +6,7 @@
         {% include 'pages/umafoto_ae_nav.html' %}
         <div class="container-lg">
             <div class="col-lg-auto">
+                {% if status %}
                 <h1>Aqui sua foto:</h1>
                 
                 <div>
@@ -17,6 +18,10 @@
                 <h3>De nada! ^^</h3>
                 <p><small>Provided by:</small></p>
                 <a  href="https://{{ provider }}.com"><img style="max-width:13rem !important" class="img-thumbnail" src={{ provider_logo }}/></a>
+                {% else %}
+                <h1>Nenhuma Foto Encontrada! :(</h1>
+                <a role="button" class="btn btn-outline-primary" href="/umafoto-ae">Tente Novamente</a>
+                {% endif %}
             </div>
         </div>
         </body>

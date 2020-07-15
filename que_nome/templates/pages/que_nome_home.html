@@ -1,0 +1,17 @@
+{% extends 'pages/que_nome_base.html' %}
+
+
+{% block content %}
+   
+<body>
+    {% include 'pages/que_nome_nav.html' %}
+    <div class="container">
+
+        <h1>Que imagem deseja?</h1>
+
+        {% for team in teams_list %}
+        <a role="button" class="btn btn-outline-primary" href="#"><img style="max-width:40%" src={{ team.team_logo }}></a>
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}

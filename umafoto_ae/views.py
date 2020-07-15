@@ -3,7 +3,9 @@ from django.http import HttpResponse
 from umafoto_ae.photohunter import ApiGetter
 
 
-umafoto_ae = lambda request : render(request, 'pages/umafoto_ae_base.html')
+home = lambda request : render(request, 'pages/umafoto_ae_home.html')
+
+info = lambda request : render(request, 'pages/umafoto_ae_info.html')
 
 def fotos(request):
     apigetter = ApiGetter()

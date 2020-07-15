@@ -1,9 +1,9 @@
-{% extends 'pages/ufa_base.html' %}
+{% extends 'pages/que_nome_base.html' %}
 
 
 {% block content %}
         <body>
-        {% include 'pages/umafoto_ae_nav.html' %}
+        {% include 'pages/que_nome_nav.html' %}
         <div class="container-lg">
             <div class="col-lg-auto">
                 <h1>Aqui sua foto:</h1>
@@ -14,8 +14,8 @@
                 <a href={{ link }}><img class="img-fluid" src={{ url }}></a>
                 </div>
                 
-                <h2>De nada! ^^</h2>
-                <p>Provided by:</p>
+                <h3>De nada! ^^</h3>
+                <p><small>Provided by:</small></p>
                 <a  href="https://{{ provider }}.com"><img style="max-width:13rem !important" class="img-thumbnail" src={{ provider_logo }}/></a>
             </div>
         </div>
