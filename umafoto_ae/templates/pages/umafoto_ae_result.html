@@ -1,4 +1,5 @@
 {% extends 'pages/umafoto_ae_base.html' %}
+{% load static %}
 
 
 {% block content %}
@@ -17,7 +18,9 @@
                 
                 <h3>De nada! ^^</h3>
                 <p><small>Provided by:</small></p>
-                <a  href="https://{{ provider }}.com"><img style="max-width:13rem !important" class="img-thumbnail" src={{ provider_logo }}/></a>
+                {% with 'assets/img/'|add:provider_logo as image_static %}
+                <a  href="https://{{ provider }}.com"><img style="max-width:13rem !important" class="img-thumbnail" src={% static image_static %}></a>
+                {% endwith %}
                 {% else %}
                 <h1>Nenhuma Foto Encontrada! :(</h1>
                 <a role="button" class="btn btn-outline-primary" href="/umafoto-ae">Tente Novamente</a>

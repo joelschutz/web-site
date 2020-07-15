@@ -89,7 +89,7 @@ class ApiGetter:
             self.photo_info['license'] = 'https://unsplash.com/license'
             self.photo_info['provider'] = 'Unsplash'
             self.photo_info['author_url'] = photo_form['user']['links']['html']
-            self.photo_info['provider_logo'] = '/static/assets/img/unsplash.svg'
+            self.photo_info['provider_logo'] = 'unsplash.svg'
             self.photo_info['status'] = True
         elif api_provider == 'pixabay':
             self.photo_info['url'] = photo_form['largeImageURL']
@@ -98,7 +98,7 @@ class ApiGetter:
             self.photo_info['license'] = 'https://pixabay.com/service/license/'
             self.photo_info['provider'] = 'Pixabay'
             self.photo_info['author_url'] = f'https://pixabay.com/pt/users/{photo_form["user"]}'
-            self.photo_info['provider_logo'] = '/static/assets/img/pixabay.svg'
+            self.photo_info['provider_logo'] = 'pixabay.svg'
             self.photo_info['status'] = True
             
 
