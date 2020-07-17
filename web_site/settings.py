@@ -79,17 +79,13 @@ WSGI_APPLICATION = 'web_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'joelsc17_web_site',
+        'USER': 'joelsc17_django',
+        'PASSWORD': 'gMmGR7baKxG3PrR',
+        'HOST': 'joelschutz.com.br',
+        'PORT': '3306',
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'joelsc17_web_site',
-    #     'USER': 'joelsc17_django',
-    #     'PASSWORD': 'gMmGR7baKxG3PrR',
-    #     'HOST': 'joelschutz.com.br',
-    #     'PORT': '3306',
-    # }
 
 }
 
