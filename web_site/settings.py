@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'joelsc17_web_site',
         'USER': 'joelsc17_django',
         'PASSWORD': 'gMmGR7baKxG3PrR',
-        'HOST': 'joelschutz.com.br',
+        'HOST': '162.241.2.151',
         'PORT': '3306',
     }
 
