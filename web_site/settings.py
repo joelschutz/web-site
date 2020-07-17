@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['joelschutz.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['joelschutz.com.br', 'localhost', '127.0.0.1', 'joelschutz.herokuapp.com']
 
 
 # Application definition
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
-ROOT_URLCONF = 'web-site.urls'
+ROOT_URLCONF = 'web_site.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'web-site.wsgi.application'
+WSGI_APPLICATION = 'web_site.wsgi.application'
 
 
 # Database
@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'web-site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'joelsc17_web_site',
+        'USER': 'joelsc17_django',
+        'PASSWORD': 'gMmGR7baKxG3PrR',
+        'HOST': 'joelschutz.com.br',
+        'PORT': '3306',
     }
 }
 
