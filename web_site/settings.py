@@ -25,7 +25,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['joelschutz.com.br', 'localhost', '127.0.0.1', 'joelschutz.herokuapp.com', 'www.joelschutz.com']
+ALLOWED_HOSTS = [
+    'www.joelschutz.com.br', 
+    'joelschutz.com.br', 
+    'localhost', 
+    '127.0.0.1', 
+    'joelschutz.herokuapp.com'
+    ]
 
 
 # Application definition
