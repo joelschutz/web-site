@@ -11,5 +11,5 @@ def info(request):
     return render(request, 'pages/umafoto_ae_info.html')
 
 
-def fotos(request):
+def result(request):
     return render(request, 'pages/umafoto_ae_result.html', PhotoHunter(request).get_photo())

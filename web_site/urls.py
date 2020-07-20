@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', portifolio.views.home, name='home'),
     path('umafoto-ae/', umafoto_ae.views.home, name='umafoto-ae'),
-    path('umafoto-ae/fotos/', umafoto_ae.views.fotos, name='umafoto-ae-fotos'),
+    path('umafoto-ae/result/', umafoto_ae.views.result, name='umafoto-ae-result'),
     path('umafoto-ae/info/', umafoto_ae.views.info, name='umafoto-ae-info'),
     path('que-nome/', que_nome.views.home, name='que-nome'),
     path('que-nome/team/', que_nome.views.team, name='que-nome-team'),
