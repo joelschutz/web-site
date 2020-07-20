@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'web_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'joelsc17_web_site',
-        'USER': 'joelsc17_django',
-        'PASSWORD': 'gMmGR7baKxG3PrR',
-        'HOST': '162.241.2.151',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_IP'),
         'PORT': '3306',
     }
 
