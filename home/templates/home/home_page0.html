@@ -1,0 +1,188 @@
+
+{% load wagtailcore_tags %}
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none"><i>Joel Schutz </i><i class="fas fa-leaf"></i></span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/static/assets/img/profile.jpg" alt="" /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Sobre mim</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experiência</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Formação</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interesses</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projetos</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Joel
+                        <span class="text-primary">Schutz</span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        Pelotas, RS Brasil & (21) 92000-3565 &
+                        <a href="mailto:name@email.com">joelsschutz@yahoo.com.br</a>
+                    </div>
+                    <p class="lead">{{ page.apresentacao|richtext }}</p>
+                    <p class="lead mb-5" style="font-weight:100"><i>{{ page.citacao }}</i> - Relato de Fã</p>
+                    <div class="social-icons ">
+                        <a class="social-icon mb-1" href="https://www.linkedin.com/in/joelschutz/"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon mb-1" href="https://github.com/JoelSchutz"><i class="fab fa-github"></i></a>
+                        <a class="social-icon mb-1" href="https://twitter.com/joelschutz"><i class="fab fa-twitter"></i></a>
+                        <!--a class="social-icon mb-1" href="https://medium.com/@joelschutz"><i class="fab fa-medium-m"></i></a-->
+                        <a class="social-icon mb-1" href="https://www.kaggle.com/joelschutz"><i class="fab fa-kaggle"></i></a>
+                        <a class="social-icon mb-1" href="https://t.me/joelschutz"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Experiência</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Desenvolvedor Python</h3>
+                            <div class="subheading mb-3">Freelancer</div>
+                            <p>Venho desenvolvendo projetos em Python em diferentes áreas. Minha maior experiência é no desenvolvimento de aplicações IoT com Raspberry Pi, porém tenho me aprofundado nas áreas de Data Science nos últimos meses com as bibliotecas Pandas, Seaborn, Numpy e SciKitLearn. Além disso iniciei meus primeiros projetos web utilizando Django, Bootstrap e Git.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Junho 2019 - Hoje</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Estágio em Metrologia Óptica</h3>
+                            <div class="subheading mb-3">INMETRO</div>
+                            <p>Este estágio fez parte do Curso técnico de Metrologia do INMETRO. Atuei no Laboratório de Óptica em um sistema de automação de medição de temperatura do Interferômetro Koesters. O software foi desenvolvido utilizando a VPL Labview e o hardware foi multimetro digital programável da Hewlett Packard.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Janeiro 2013 - December 2013</span></div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Education-->
+            <section class="resume-section" id="education">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Formação</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Alura Cursos Online de Tecnologia</h3>
+                            <div class="subheading">Formação Python</div>
+                            <div class="subheading">Formação Data Science</div>
+                            <div class="subheading mb-3">Formação Python para Data Science</div>
+                            <p>80% Concluído</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">2020</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">INMETRO/Colégio Estadual Círculo Operário</h3>
+                            <div class="subheading mb-3">Curso Técnico de Metrologia</div>
+                            <p>Nota Final: </p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">2010 - 2013</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Pontifícia Universidade Católica do Rio de Janeiro</h3>
+                            <div class="subheading mb-3">Licenciatura em História</div>
+                            <p>Incompleto</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Janeiro 2013 - Outubro 2018</span></div>
+                    </div>
+                    <h3 class="mb-0">Cursos Livres</h3>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <div class="subheading mb-3">Você Sabe Quem - Cia de Teatro</div>
+                            <p>Linguagens Teatrais</p>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="subheading mb-3">SESC - Duque de Caxias</div>
+                            <p>Cinema e linguagem Cinematográfica</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Skills-->
+            <section class="resume-section" id="skills">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Habilidades</h2>
+                    <div class="subheading mb-3">Ferramentas e linguagens de programação</div>
+                    <ul class="list-inline dev-icons">
+                        <li class="list-inline-item" title="HTML5"><i class="fab fa-html5"></i></li>
+                        <li class="list-inline-item" title="Bootstrap"><i class="fab fa-bootstrap"></i></li>
+                        <li class="list-inline-item" title="Python 3"><i class="fab fa-python"></i></li>
+                        <li class="list-inline-item" title="Sistemas Linux"><i class="fab fa-linux"></i></li>
+                        <li class="list-inline-item" title="Raspberry Pi"><i class="fab fa-raspberry-pi"></i></li>
+                        <li class="list-inline-item" title="Makrdown"><i class="fab fa-markdown"></i></li>
+                        <li class="list-inline-item" title="Pacote Adobe"><i class="fab fa-adobe"></i></li>
+                        <li class="list-inline-item" title="Home Office"><i class="fas fa-laptop-house"></i></li>
+                    </ul>
+                    <div class="subheading mb-3">Diferenciais</div>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Inglês Avançado
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Agilidade e vontade de aprender novas habilidades
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Trabalho em equipe e experiência em liderança
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Proatividade e busca de soluções de forma altônoma
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Conhecimento amplo(De Artes e Ciências Humanas há Programação e Estatística)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Interests-->
+            <section class="resume-section" id="interests">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Interesses</h2>
+                    <p>Meus maiores interesses na área de computação e desenvolvimento de softwaree são, sem dúvida, os sistemas embarcados. Me impressiona bastante a capacidade de um miciro-hardware conectar até a sua torradeira com o mundo através da internet. Gosto bastante de me divertir com o ESP32/8266 e o Raspberry Pi, experimentar os limites desses aparelhos e tentar coisas novas com eles.</p>
+                    <p>Para além disso também sou um grande fã de Cinema e tenho uma coleção bastatnte extensa de filmes de todo o mundo. Assisto de tudo, mas diria que meus gêneros preferidos são Drama, Ficção Científica e Thriller. No tempo livre eu tento encontrar inspiração para escrever peças de teatro e outros textos, infelizmente não tive muito ultimamente e a maioria das minhas histórias estão paradas.</p>
+                    <p>Recentemente passei a jogar mais video-games. RPGs e outros com bastante foco em história tem me dado a idéia de adaptar algumas roteiros para esse formato no futuro.</p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Projects -->
+            <section class="resume-section" id="projects">
+                <div class="resume-section-content">
+                    <h2 class="mb-5"> Projetos </h2>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-rocket text-success"></i></span>
+                            UmaFoto.ae - Um site de pesquisa de imagens para quem não tem tempo. <a href='/umafoto-ae'>Link</a>
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-rocket text-success"></i></span>
+                            Que nome?! - Um site que mostra os jogadores com nomes mais incomuns que já passaram pelo seu time do coração.<a href='/que-nome'>Link</a>
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check-circle text-success"></i></span>
+                            Análise e modelo de aluguéis nas cidades de São Paulo, Rio de Janeiro e Porto Alegre.
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+        </div>
+    </body>
