@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import portifolio.views
+import portfolio.views
 import umafoto_ae.views
 import que_nome.views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -23,7 +23,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', portifolio.views.home, name='home'),
+    path('', portfolio.views.home, name='home'),
     path('umafoto-ae/', umafoto_ae.views.home, name='umafoto-ae'),
     path('umafoto-ae/result/', umafoto_ae.views.result, name='umafoto-ae-result'),
     path('umafoto-ae/info/', umafoto_ae.views.info, name='umafoto-ae-info'),
