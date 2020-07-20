@@ -23,6 +23,58 @@ class PhotoHunter:
         except IndexError:
             return {'status': False}
 
+class ResponseProcesser:
+    """This class is responsable for interpreting and storing the API Response."""
+
+    def fill_photo_info(self, photo_form, ph: PhotoHunter):
+        if ph.provider == 'unsplash':
+            ph.photo_info['url'] = photo_form['urls']['regular']
+            ph.photo_info['link'] = photo_form['links']['html']
+            ph.photo_info['author_name'] = photo_form['user']['name']
+            ph.photo_info['license'] = 'https://unsplash.com/license'
+            ph.photo_info['provider'] = 'Unsplash'
+            ph.photo_info['author_url'] = photo_form['user']['links']['html']
+            ph.photo_info['provider_logo'] = 'unsplash.svg'
+            ph.photo_info['status'] = True
+        elif ph.provider == 'pixabay':
+            ph.photo_info['url'] = photo_form['largeImageURL']
+            ph.photo_info['link'] = photo_form['pageURL']
+            ph.photo_info['author_name'] = photo_form['user']
+            ph.photo_info['license'] = 'https://pixabay.com/service/license/'
+            ph.photo_info['provider'] = 'Pixabay'
+            ph.photo_info['author_url'] = f'https://pixabay.com/pt/users/{photo_form["user"]}'
+            ph.photo_info['provider_logo'] = 'pixabay.svg'
+            ph.photo_info['status'] = True
+
+    def pick_random_photo(self, json_form, ph: PhotoHunter):
+        photo_list = []
+        if ph.provider == 'unsplash':
+            photo_list = json_form['results']
+        elif ph.provider == 'pixabay':
+            photo_list = json_form['hits']
+
+        return random.choice(photo_list)
+
+    def pick_photo(self, ph: PhotoHunter):
+
+        try:
+            with open(f'./umafoto_ae/jsons/{ph.provider}_{ph.query}_{ph.orientation}_{ph.color}.json', 'rt') as file:
+                response = json.load(file)
+                print('Entregando JSON armazenado')
+        except FileNotFoundError:
+            response = ApiGetter(ph).get_response()
+            print('Entregando JSON novo')
+            self.store_json(response, ph)
+        except Exception as e:
+            print(e)
+        finally:
+            print('Escolhendo Foto')
+            photo = self.pick_random_photo(response, ph)
+            self.fill_photo_info(photo, ph)
+
+    def store_json(self, json_form, ph: PhotoHunter):
+        with open(f'./umafoto_ae/jsons/{ph.api_provider}_{ph.query}_{ph.orientation}_{ph.color}.json', 'at') as file:
+            json.dump(json_form, file)
 
 class ApiGetter:
     """This class is responsable for getting photos from the APIs."""
@@ -92,53 +144,3 @@ class ApiGetter:
             raise ReachingAPILimit('The API is near its limits.')
 
 
-class ResponseProcesser:
-    """This class is responsable for interpreting and storing the API Response."""
-
-    def fill_photo_info(self, photo_form, ph: PhotoHunter):
-        if ph.provider == 'unsplash':
-            ph.photo_info['url'] = photo_form['urls']['regular']
-            ph.photo_info['link'] = photo_form['links']['html']
-            ph.photo_info['author_name'] = photo_form['user']['name']
-            ph.photo_info['license'] = 'https://unsplash.com/license'
-            ph.photo_info['provider'] = 'Unsplash'
-            ph.photo_info['author_url'] = photo_form['user']['links']['html']
-            ph.photo_info['provider_logo'] = 'unsplash.svg'
-            ph.photo_info['status'] = True
-        elif ph.provider == 'pixabay':
-            ph.photo_info['url'] = photo_form['largeImageURL']
-            ph.photo_info['link'] = photo_form['pageURL']
-            ph.photo_info['author_name'] = photo_form['user']
-            ph.photo_info['license'] = 'https://pixabay.com/service/license/'
-            ph.photo_info['provider'] = 'Pixabay'
-            ph.photo_info['author_url'] = f'https://pixabay.com/pt/users/{photo_form["user"]}'
-            ph.photo_info['provider_logo'] = 'pixabay.svg'
-            ph.photo_info['status'] = True
-
-    def pick_random_photo(self, json_form, ph: PhotoHunter):
-        photo_list = []
-        if ph.provider == 'unsplash':
-            photo_list = json_form['results']
-        elif ph.provider == 'pixabay':
-            photo_list = json_form['hits']
-
-        return random.choice(photo_list)
-
-    def pick_photo(self, ph: PhotoHunter):
-
-        try:
-            with open(f'./umafoto_ae/jsons/{ph.provider}_{ph.query}_{ph.orientation}_{ph.color}.json', 'rt') as file:
-                response = json.load(file)
-                print('Entregando JSON armazenado')
-        except FileNotFoundError:
-            response = ApiGetter(ph).get_response()
-            print('Entregando JSON novo')
-            self.store_json(response, ph)
-        finally:
-            print('Escolhendo Foto')
-            photo = self.pick_random_photo(response, ph)
-            self.fill_photo_info(photo, ph)
-
-    def store_json(self, json_form, ph: PhotoHunter):
-        with open(f'./umafoto_ae/jsons/{ph.api_provider}_{ph.query}_{ph.orientation}_{ph.color}.json', 'at') as file:
-            json.dump(json_form, file)
