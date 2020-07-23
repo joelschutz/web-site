@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from .models import Teams
 
@@ -14,8 +14,3 @@ class TeamsAdmin(ModelAdmin):
     search_fields = ('name', 'team_id')
 
 modeladmin_register(TeamsAdmin)
-=======
-from django.contrib import admin
-
-# Register your models here.
->>>>>>> 74158fa133f790eef2dbaacc7130963fa5c60e20

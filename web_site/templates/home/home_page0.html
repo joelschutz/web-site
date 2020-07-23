@@ -32,7 +32,7 @@
                         Pelotas, RS Brasil & (21) 92000-3565 &
                         <a href="mailto:name@email.com">joelsschutz@yahoo.com.br</a>
                     </div>
-                    <p class="lead">{{ page.apresentacao|richtext }}</p>
+                    <p class="lead">{{ page.apresentacao }}</p>
                     <p class="lead mb-5" style="font-weight:100"><i>{{ page.citacao }}</i> - Relato de Fã</p>
                     <div class="social-icons ">
                         <a class="social-icon mb-1" href="https://www.linkedin.com/in/joelschutz/"><i class="fab fa-linkedin-in"></i></a>
@@ -49,22 +49,9 @@
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Experiência</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Desenvolvedor Python</h3>
-                            <div class="subheading mb-3">Freelancer</div>
-                            <p>Venho desenvolvendo projetos em Python em diferentes áreas. Minha maior experiência é no desenvolvimento de aplicações IoT com Raspberry Pi, porém tenho me aprofundado nas áreas de Data Science nos últimos meses com as bibliotecas Pandas, Seaborn, Numpy e SciKitLearn. Além disso iniciei meus primeiros projetos web utilizando Django, Bootstrap e Git.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Junho 2019 - Hoje</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Estágio em Metrologia Óptica</h3>
-                            <div class="subheading mb-3">INMETRO</div>
-                            <p>Este estágio fez parte do Curso técnico de Metrologia do INMETRO. Atuei no Laboratório de Óptica em um sistema de automação de medição de temperatura do Interferômetro Koesters. O software foi desenvolvido utilizando a VPL Labview e o hardware foi multimetro digital programável da Hewlett Packard.</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Janeiro 2013 - December 2013</span></div>
-                    </div>
+                    {% for block in page.experiencias %}
+                        {% include_block block %}
+                    {% endfor %}
                 </div>
             </section>
             <hr class="m-0" />
@@ -72,42 +59,18 @@
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Formação</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Alura Cursos Online de Tecnologia</h3>
-                            <div class="subheading">Formação Python</div>
-                            <div class="subheading">Formação Data Science</div>
-                            <div class="subheading mb-3">Formação Python para Data Science</div>
-                            <p>80% Concluído</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2020</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">INMETRO/Colégio Estadual Círculo Operário</h3>
-                            <div class="subheading mb-3">Curso Técnico de Metrologia</div>
-                            <p>Nota Final: </p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2010 - 2013</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Pontifícia Universidade Católica do Rio de Janeiro</h3>
-                            <div class="subheading mb-3">Licenciatura em História</div>
-                            <p>Incompleto</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Janeiro 2013 - Outubro 2018</span></div>
-                    </div>
+                    {% for block in page.formacoes %}
+                        {% if block.block_type == "formal_courses" %}
+                                {% include_block block %}
+                        {% endif %}
+                    {% endfor %}
                     <h3 class="mb-0">Cursos Livres</h3>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <div class="subheading mb-3">Você Sabe Quem - Cia de Teatro</div>
-                            <p>Linguagens Teatrais</p>
-                        </div>
-                        <div class="flex-grow-1">
-                            <div class="subheading mb-3">SESC - Duque de Caxias</div>
-                            <p>Cinema e linguagem Cinematográfica</p>
-                        </div>
+                    {% for block in page.formacoes %}
+                        {% if block.block_type == "free_courses" %}
+                                {% include_block block %}
+                        {% endif %}
+                    {% endfor %}
                     </div>
                 </div>
             </section>
@@ -157,9 +120,7 @@
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Interesses</h2>
-                    <p>Meus maiores interesses na área de computação e desenvolvimento de softwaree são, sem dúvida, os sistemas embarcados. Me impressiona bastante a capacidade de um miciro-hardware conectar até a sua torradeira com o mundo através da internet. Gosto bastante de me divertir com o ESP32/8266 e o Raspberry Pi, experimentar os limites desses aparelhos e tentar coisas novas com eles.</p>
-                    <p>Para além disso também sou um grande fã de Cinema e tenho uma coleção bastatnte extensa de filmes de todo o mundo. Assisto de tudo, mas diria que meus gêneros preferidos são Drama, Ficção Científica e Thriller. No tempo livre eu tento encontrar inspiração para escrever peças de teatro e outros textos, infelizmente não tive muito ultimamente e a maioria das minhas histórias estão paradas.</p>
-                    <p>Recentemente passei a jogar mais video-games. RPGs e outros com bastante foco em história tem me dado a idéia de adaptar algumas roteiros para esse formato no futuro.</p>
+                        {{ page.interesses|richtext }}
                 </div>
             </section>
             <hr class="m-0" />
