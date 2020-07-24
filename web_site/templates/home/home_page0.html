@@ -29,18 +29,15 @@
                         <span class="text-primary">Schutz</span>
                     </h1>
                     <div class="subheading mb-5">
-                        Pelotas, RS Brasil & (21) 92000-3565 &
-                        <a href="mailto:name@email.com">joelsschutz@yahoo.com.br</a>
+                        {{ page.local }} & {{ page.telefone }} &
+                        <a href="mailto:{{ page.email }}">{{ page.email }}</a>
                     </div>
                     <p class="lead">{{ page.apresentacao }}</p>
                     <p class="lead mb-5" style="font-weight:100"><i>{{ page.citacao }}</i> - Relato de Fã</p>
                     <div class="social-icons ">
-                        <a class="social-icon mb-1" href="https://www.linkedin.com/in/joelschutz/"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon mb-1" href="https://github.com/JoelSchutz"><i class="fab fa-github"></i></a>
-                        <a class="social-icon mb-1" href="https://twitter.com/joelschutz"><i class="fab fa-twitter"></i></a>
-                        <!--a class="social-icon mb-1" href="https://medium.com/@joelschutz"><i class="fab fa-medium-m"></i></a-->
-                        <a class="social-icon mb-1" href="https://www.kaggle.com/joelschutz"><i class="fab fa-kaggle"></i></a>
-                        <a class="social-icon mb-1" href="https://t.me/joelschutz"><i class="fab fa-telegram-plane"></i></a>
+                        {% for button in self.contact_buttons.all %}
+                        <a class="social-icon mb-1" href={{ button.button.link }}><i class="fab fa-{{ button.button.social_icon }}"></i></a>
+                        {% endfor %}
                     </div>
                 </div>
             </section>
@@ -81,37 +78,18 @@
                     <h2 class="mb-5">Habilidades</h2>
                     <div class="subheading mb-3">Ferramentas e linguagens de programação</div>
                     <ul class="list-inline dev-icons">
-                        <li class="list-inline-item" title="HTML5"><i class="fab fa-html5"></i></li>
-                        <li class="list-inline-item" title="Bootstrap"><i class="fab fa-bootstrap"></i></li>
-                        <li class="list-inline-item" title="Python 3"><i class="fab fa-python"></i></li>
-                        <li class="list-inline-item" title="Sistemas Linux"><i class="fab fa-linux"></i></li>
-                        <li class="list-inline-item" title="Raspberry Pi"><i class="fab fa-raspberry-pi"></i></li>
-                        <li class="list-inline-item" title="Makrdown"><i class="fab fa-markdown"></i></li>
-                        <li class="list-inline-item" title="Pacote Adobe"><i class="fab fa-adobe"></i></li>
-                        <li class="list-inline-item" title="Home Office"><i class="fas fa-laptop-house"></i></li>
+                      {% for icon in self.tech_icons.all %}
+                        <li class="list-inline-item" title="{{ icon.tech_icon.name }}"><i class="fab fa-{{ icon.tech_icon.tech_icon }}"></i></li>
+                      {% endfor %}
                     </ul>
                     <div class="subheading mb-3">Diferenciais</div>
                     <ul class="fa-ul mb-0">
+                      {% for item in self.diferentials.all %}
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Inglês Avançado
+                            {{ item.text }}
                         </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Agilidade e vontade de aprender novas habilidades
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Trabalho em equipe e experiência em liderança
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Proatividade e busca de soluções de forma altônoma
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Conhecimento amplo(De Artes e Ciências Humanas há Programação e Estatística)
-                        </li>
+                      {% endfor %}
                     </ul>
                 </div>
             </section>
@@ -129,18 +107,9 @@
                 <div class="resume-section-content">
                     <h2 class="mb-5"> Projetos </h2>
                     <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-rocket text-success"></i></span>
-                            UmaFoto.ae - Um site de pesquisa de imagens para quem não tem tempo. <a href='/umafoto-ae'>Link</a>
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-rocket text-success"></i></span>
-                            Que nome?! - Um site que mostra os jogadores com nomes mais incomuns que já passaram pelo seu time do coração.<a href='/que-nome'>Link</a>
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check-circle text-success"></i></span>
-                            Análise e modelo de aluguéis nas cidades de São Paulo, Rio de Janeiro e Porto Alegre.
-                        </li>
+                        {% for block in page.projetos %}
+                            {% include_block block %}
+                        {% endfor %}
                     </ul>
                 </div>
 

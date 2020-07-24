@@ -1,0 +1,21 @@
+<li>
+    <span class="fa-li">
+      <i class="fas
+      {% if self.state == 'done' %}
+       fa-check-circle text-success
+      {% elif self.state == 'developing' %}
+        fa-terminal text-alert
+      {% elif self.state == 'deployed' %}
+        fa-rocket text-success
+      {% else %}
+        fa-times-circle text-warning
+      {% endif %}">
+      </i>
+    </span>
+    {{ self.descrition }}
+    {% for link in self.links %}
+      <br>
+      <a href='{{ link.url }}'>{{ link.text }}</a>
+    {% endfor %}
+</li>
+<br>
