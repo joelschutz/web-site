@@ -6,7 +6,6 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, InlinePanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-from que_nome.models import Teams, Players
 from home.blocks import CourseBlock, FreeCourseBlock, JobBlock, ProjectBlock
 
 class ContactButton(models.Model):
@@ -176,11 +175,3 @@ class HomePage(Page):
         classname="collapsible collapsed"
         ),
     ]
-
-class HomePageQueNome(Page):
-    template = 'que_nome/que_nome_home.html'
-    def get_context(self, request, *args, **kwargs):
-        """ Teams for page """
-        context = super().get_context(request, *args, **kwargs)
-        context['teams'] = Teams.objects.order_by('name')
-        return context
