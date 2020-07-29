@@ -8,7 +8,6 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
-import que_nome.views
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
