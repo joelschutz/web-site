@@ -1,0 +1,14 @@
+
+<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+    <div class="flex-grow-1">
+        <h3 class="mb-0">{{ self.institution }}</h3>
+        {% for course in self.courses %}
+        <div class="subheading">{{ course }}</div>
+        {% endfor %}
+        <p class="mt-3">{{ self.note }}</p>
+    </div>
+    <div class="flex-shrink-0">
+      <span class="text-primary">{{ self.begining_date|date:"F Y" }}{% if self.finishing_date %} - {{ self.finishing_date|date:"F Y" }}{% endif %}
+    </span>
+  </div>
+</div>

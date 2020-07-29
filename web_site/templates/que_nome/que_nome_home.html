@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}template-quenomehome{% endblock %}
+
+{% block extra_css %}
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="{% static 'css/que_nome_bootstrap.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
+{% block content %}
+
+<body>
+    {% include 'que_nome/que_nome_nav.html' %}
+    <div class="container-lg">
+        <div class="col-lg-auto">
+            <h1>Qual seu Time do Coração?</h1>
+            {% for team in teams.all %}
+            <a role="button" class="btn btn-outline-primary" style="max-width:8rem;height:12rem;line-height:14px;margin-bottom:3px" href="team/?team={{ team.team_id }}"><img style="max-width:100%" src={{ team.team_logo }}>{{ team.name }}</a>
+            {% endfor %}
+
+        </div>
+    </div>
+</body>
+{% endblock %}

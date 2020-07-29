@@ -1,0 +1,6 @@
+    <div class="flex-grow-1">
+        <div class="subheading mb-3">{{ self.institution }}</div>
+        {% for course in self.courses %}
+        <p>{{ course }}</p>
+        {% endfor %}
+    </div>
