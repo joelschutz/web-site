@@ -45,7 +45,7 @@ class ResponseProcesser:
             ph.photo_info['author_name'] = photo_form['user']
             ph.photo_info['license'] = 'https://pixabay.com/service/license/'
             ph.photo_info['provider'] = 'Pixabay'
-            ph.photo_info['author_url'] = f'https://pixabay.com/pt/users/{photo_form["user"]}'
+            ph.photo_info['author_url'] = 'https://pixabay.com/pt/users/{}'.format(photo_form["user"])
             ph.photo_info['provider_logo'] = 'pixabay.svg'
             ph.photo_info['status'] = True
 
@@ -61,7 +61,7 @@ class ResponseProcesser:
     def pick_photo(self, ph: PhotoHunter):
 
         try:
-            with open(f'{self.jsons_storage}{ph.provider}_{ph.query}_{ph.orientation}_{ph.color}.json', 'rt') as file:
+            with open('{}{}_{}_{}_{}.json'.format(self.jsons_storage, ph.provider, ph.query, ph.orientation, ph.color), 'rt') as file:
                 response = json.load(file)
                 print('Entregando JSON armazenado')
         except FileNotFoundError:
@@ -75,7 +75,7 @@ class ResponseProcesser:
         self.fill_photo_info(photo, ph)
 
     def store_json(self, json_form, ph: PhotoHunter):
-        with open(f'{self.jsons_storage}{ph.provider}_{ph.query}_{ph.orientation}_{ph.color}.json', 'at') as file:
+        with open('{}{}_{}_{}_{}.json'.format(self.jsons_storage, ph.provider, ph.query, ph.orientation, ph.color), 'at') as file:
             json.dump(json_form, file)
 
 class ApiGetter:
@@ -112,9 +112,9 @@ class ApiGetter:
             "pink": "magenta",
             "white": "white",
             "black": "black"}
-        query = f'&query={self.query}' if self.query else '&query=photo'
-        color = f'&color={colors[self.color]}' if self.color != 'all' else ''
-        orientation = f'&orientation={orientations[self.orientation]}' if self.orientation != 'all' else ''
+        query = '&query={}'.format(self.query) if self.query else '&query=photo'
+        color = '&color={}'.format(colors[self.color]) if self.color != 'all' else ''
+        orientation = '&orientation={}'.format(orientations[self.orientation]) if self.orientation != 'all' else ''
         api_request = ''.join(['https://api.unsplash.com/search/photos', os.environ.get(
             "UNSPLASH_KEY"), self.PER_PAGE, query, orientation, color])
         response = get(api_request)
@@ -123,9 +123,9 @@ class ApiGetter:
 
     def pixabay(self):
         print('Pedindo foto ao pixabay')
-        query = f'&q={self.query}' if self.query else ''
-        orientation = f'&orientation={self.orientation}'
-        color = f'&colors={self.color}'
+        query = '&q={}'.format(self.query) if self.query else ''
+        orientation = '&orientation={}'.format(self.orientation)
+        color = '&colors={}'.format(self.color)
         api_request = ''.join(['https://pixabay.com/api/', os.environ.get(
             "PIXABAY_KEY"), self.PER_PAGE, query, orientation, color, '&image_type=photo'])
         response = get(api_request)
@@ -142,7 +142,7 @@ class ApiGetter:
     def get_response(self):
         if self.limit > 5:
             
-            return eval(f'self.{self.provider}')()
+            return eval('self.{}'.format(self.provider))()
         else:
             raise ReachingAPILimit('The API is near its limits.')
 

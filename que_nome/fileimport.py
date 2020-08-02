@@ -14,7 +14,7 @@ def import_teams(file):
             team_logo = team['team_logo']
             )
             t.save()
-            print(f'Time salvo: {t.name}')
+            print('Time salvo: {}'.format(t.name))
 
 def import_players(file):
     with open(file, 'rt') as f:
@@ -38,4 +38,4 @@ def import_players(file):
             for team in teams:
                 p.teams.add(Teams.objects.get(team_id=int(team)))
                 p.save()
-            print(f'Jogador Salvo salvo: {p}')
+            print('Jogador Salvo salvo: {}'.format(p))
