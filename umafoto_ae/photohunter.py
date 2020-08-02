@@ -136,8 +136,8 @@ class ApiGetter:
         if response.status_code != 200:
             raise ServiceNotFound('Resposta inesperada do servidor')
         else:
-            self.request_limit[self.provider] = response.headers['X-RateLimit-Remaining']
-            return json.loads(response.content)
+            self.request_limit[self.provider] = int(response.headers['X-RateLimit-Remaining'])
+            return response.json()
 
     def get_response(self):
         if self.limit > 5:
